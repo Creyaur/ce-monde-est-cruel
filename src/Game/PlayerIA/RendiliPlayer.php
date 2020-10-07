@@ -49,7 +49,7 @@ class RendiliPlayer extends Player
         $opponentLastScore = $this->result->getLastScoreFor($this->opponentSide); // if 0 (first round)
 
         $allChoices = $this->result->getChoicesFor($this->mySide);
-        $opponentLastChoice = $this->result->getChoicesFor($this->opponentSide);
+        //$opponentLastChoice = $this->result->getChoicesFor($this->opponentSide);
         
         $myLastScore = $this->result->getLastScoreFor($this->mySide);
         $stats = $this->result->getStats();
@@ -62,14 +62,20 @@ class RendiliPlayer extends Player
         }
         if ($opponentLastChoice == parent::rockChoice())
         {
-            return parent::paperChoice();
-        }
-        if ($opponentLastChoice == parent::paperChoice())
-        {
             return parent::scissorsChoice();
         }
+        if ($opponentLastChoice == parent::rockChoice())
+        {
+            return parent::paperChoice();
+        }
         
-        
+        /*foreach($opponentLastChoice as $t)
+        {
+            echo strval($t);
+            echo ' ';
+        }*/
+
+
         return parent::scissorsChoice();
 
     }
