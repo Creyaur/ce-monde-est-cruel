@@ -56,8 +56,8 @@ class RendiliPlayer extends Player
 
 
 
-        if ($roundNumber % 2 == 0)
-        {
+       /* if ($roundNumber % 2 == 0)
+        {*/
             if ($opponentLastChoice == parent::scissorsChoice())
             {
                 return parent::rockChoice();
@@ -70,7 +70,7 @@ class RendiliPlayer extends Player
             {
                 return parent::scissorsChoice();
             }
-        }
+        /*}
         else
         {
             if ($opponentLastChoice == parent::scissorsChoice())
@@ -85,11 +85,6 @@ class RendiliPlayer extends Player
             {
                 return parent::rockChoice();
             }
-        }
-        /*foreach($opponentLastChoice as $t)
-        {
-            echo strval($t);
-            echo ' ';
         }*/
 
 
