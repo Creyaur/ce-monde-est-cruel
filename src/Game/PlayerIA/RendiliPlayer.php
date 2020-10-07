@@ -42,7 +42,7 @@ class RendiliPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         
 
-        return parent::paperChoice();
+        return parent::scissorsChoice();
 
     }
 };
