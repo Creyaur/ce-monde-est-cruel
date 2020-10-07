@@ -40,6 +40,8 @@ class RendiliPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
+
+        $roundNumber = $this->result->getNbRound();
         $myLastChoice = $this->result->getLastChoiceFor($this->mySide); //if 0 (first round)
         $opponentLastChoice = $this->result->getLastChoiceFor($this->opponentSide); // if 0 (first round)
 
@@ -52,20 +54,22 @@ class RendiliPlayer extends Player
         $myLastScore = $this->result->getLastScoreFor($this->mySide);
         $stats = $this->result->getStats();
 
+
+
         if ($opponentLastChoice == parent::scissorsChoice())
         {
             return parent::rockChoice();
         }
         if ($opponentLastChoice == parent::rockChoice())
         {
-            return parent::scissorsChoice();
-        }
-        if ($opponentLastChoice == parent::rockChoice())
-        {
             return parent::paperChoice();
         }
-
-
+        if ($opponentLastChoice == parent::paperChoice())
+        {
+            return parent::scissorsChoice();
+        }
+        
+        
         return parent::scissorsChoice();
 
     }
