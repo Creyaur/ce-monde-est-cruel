@@ -62,11 +62,11 @@ class RendiliPlayer extends Player
         }
         if ($opponentLastChoice == parent::rockChoice())
         {
-            return parent::scissorsChoice();
-        }
-        if ($opponentLastChoice == parent::rockChoice())
-        {
             return parent::paperChoice();
+        }
+        if ($opponentLastChoice == parent::paperChoice())
+        {
+            return parent::scissorsChoice();
         }
         
         /*foreach($opponentLastChoice as $t)
