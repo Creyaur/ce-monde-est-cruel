@@ -50,25 +50,42 @@ class RendiliPlayer extends Player
 
         $allChoices = $this->result->getChoicesFor($this->mySide);
         //$opponentLastChoice = $this->result->getChoicesFor($this->opponentSide);
-        
+
         $myLastScore = $this->result->getLastScoreFor($this->mySide);
         $stats = $this->result->getStats();
 
 
 
-        if ($opponentLastChoice == parent::scissorsChoice())
+        if ($roundNumber % 2 == 0)
         {
-            return parent::rockChoice();
+            if ($opponentLastChoice == parent::scissorsChoice())
+            {
+                return parent::rockChoice();
+            }
+            if ($opponentLastChoice == parent::rockChoice())
+            {
+                return parent::paperChoice();
+            }
+            if ($opponentLastChoice == parent::paperChoice())
+            {
+                return parent::scissorsChoice();
+            }
         }
-        if ($opponentLastChoice == parent::rockChoice())
+        else
         {
-            return parent::paperChoice();
+            if ($opponentLastChoice == parent::scissorsChoice())
+            {
+                return parent::paperChoice();
+            }
+            if ($opponentLastChoice == parent::rockChoice())
+            {
+                return parent::scissorsChoice();
+            }
+            if ($opponentLastChoice == parent::paperChoice())
+            {
+                return parent::rockChoice();
+            }
         }
-        if ($opponentLastChoice == parent::paperChoice())
-        {
-            return parent::scissorsChoice();
-        }
-        
         /*foreach($opponentLastChoice as $t)
         {
             echo strval($t);
