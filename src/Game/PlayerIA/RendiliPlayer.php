@@ -86,7 +86,7 @@ class RendiliPlayer extends Player
                 return parent::rockChoice();
             }
         }
-        else if ($roundNumber % 4 == 1)
+        else if ($roundNumber % 4 == 2)
         {
             return $opponentLastChoice;
         }
