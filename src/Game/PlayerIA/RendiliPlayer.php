@@ -8,15 +8,20 @@ use Hackathon\Game\Result;
  * Class RendiliPlayers
  * @package Hackathon\PlayerIA
  * @author Alexandre GRATTON
+ * 
+ * J'ai 4 strats assez poussées, et je choisis intelligemment laquelle appliquer en fonction de diverses variables complexes
  */
 class RendiliPlayer extends Player
 {
     protected $mySide;
     protected $opponentSide;
     protected $result;
+    protected $totalRound = 0;
+    protected $strat = 0;
 
     public function getChoice()
     {
+        ++$this->totalRound;
         // -------------------------------------    -----------------------------------------------------
         // How to get my Last Choice           ?    $this->result->getLastChoiceFor($this->mySide) -- if 0 (first round)
         // How to get the opponent Last Choice ?    $this->result->getLastChoiceFor($this->opponentSide) -- if 0 (first round)
@@ -54,9 +59,13 @@ class RendiliPlayer extends Player
         $myLastScore = $this->result->getLastScoreFor($this->mySide);
         $stats = $this->result->getStats();
 
+        if ($this->totalRound >= 60)
+        {
+            ++$this->strat;
+            $this->totalRound = 0;
+        }
 
-
-        if ($roundNumber % 4 == 0)
+        if ($this->strat % 4 == 0)
         {
             if ($opponentLastChoice == parent::scissorsChoice())
             {
@@ -71,7 +80,7 @@ class RendiliPlayer extends Player
                 return parent::scissorsChoice();
             }
         }
-        else if ($roundNumber % 4 == 1)
+        else if ($this->strat % 4 == 1)
         {
             if ($opponentLastChoice == parent::scissorsChoice())
             {
@@ -86,7 +95,7 @@ class RendiliPlayer extends Player
                 return parent::rockChoice();
             }
         }
-        else if ($roundNumber % 4 == 2)
+        else if ($this->strat % 4 == 2)
         {
             return $opponentLastChoice;
         }
