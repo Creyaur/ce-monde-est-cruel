@@ -66,6 +66,7 @@ class RendiliPlayer extends Player
         }
 
 
+        return parent::scissorsChoice();
 
     }
 };
