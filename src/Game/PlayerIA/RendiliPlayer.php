@@ -7,7 +7,7 @@ use Hackathon\Game\Result;
 /**
  * Class RendiliPlayers
  * @package Hackathon\PlayerIA
- * @author YOUR NAME HERE
+ * @author Alexandre GRATTON
  */
 class RendiliPlayer extends Player
 {
@@ -40,9 +40,9 @@ class RendiliPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
+        
 
-
-        return parent::rockChoice();
+        return parent::paperChoice();
 
     }
 };
